@@ -5,6 +5,50 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%
+    String currentUri = request.getRequestURI();
+    String currentServlet = request.getServletPath();
+
+    boolean isDashboard =
+            currentUri.contains("dashboard.jsp");
+
+    boolean isProfile =
+            currentUri.contains("profile.jsp");
+
+    boolean isExploreGigs =
+            currentServlet.contains("JobServlet") ||
+            currentUri.contains("JobServlet") ||
+            currentUri.contains("jobList.jsp") ||
+            currentUri.contains("jobDetails.jsp");
+
+    boolean isApplications =
+            currentUri.contains("application.jsp");
+
+    boolean isWorkRecords =
+            currentServlet.contains("WorkRecordServlet") ||
+            currentUri.contains("WorkRecordServlet") ||
+            currentUri.contains("workRecord.jsp");
+
+    boolean isWageCalculation =
+            currentServlet.contains("WageCalculationServlet") ||
+            currentUri.contains("WageCalculationServlet") ||
+            currentUri.contains("wageCalculation.jsp");
+
+    boolean isPayments =
+            currentServlet.contains("PaymentServlet") ||
+            currentUri.contains("PaymentServlet") ||
+            currentUri.contains("payment.jsp");
+
+    boolean isReports =
+            currentServlet.contains("ReportServlet") ||
+            currentUri.contains("ReportServlet") ||
+            currentUri.contains("reportDashboard.jsp");
+
+    String activeClass = "active text-white shadow-sm bg-primary";
+    String inactiveClass = "text-secondary nav-hover-custom";
+%>
+
 <!-- Sidebar Desktop (Professional Dark Corporate Theme) -->
 <div class="col-md-3 col-lg-2 sidebar d-none d-md-flex flex-column justify-content-between p-4 shadow" style="background-color: #0f172a; min-height: 100vh; border-right: 1px solid #1e293b;">
     
@@ -21,23 +65,43 @@
         
         <ul class="nav flex-column gap-1">
             <li class="nav-item">
-                <a href="dashboard.jsp" class="nav-link active px-3 py-2.5 fw-medium text-white rounded-2 shadow-sm bg-primary">
+                <a href="dashboard.jsp" class="nav-link px-3 py-2.5 fw-medium rounded-2 <%= isDashboard ? activeClass : inactiveClass %>">
                     <i class="bi bi-speedometer2 me-2"></i> Dashboard
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link px-3 py-2.5 fw-medium text-secondary rounded-2 nav-hover-custom">
+                <a href="profile.jsp" class="nav-link px-3 py-2.5 fw-medium rounded-2 <%= isProfile ? activeClass : inactiveClass %>">
+                    <i class="bi bi-person-circle me-2"></i> Profile
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="JobServlet" class="nav-link px-3 py-2.5 fw-medium rounded-2 <%= isExploreGigs ? activeClass : inactiveClass %>">
                     <i class="bi bi-search me-2"></i> Explore Gigs
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link px-3 py-2.5 fw-medium text-secondary rounded-2 nav-hover-custom">
+                <a href="application.jsp" class="nav-link px-3 py-2.5 fw-medium rounded-2 <%= isApplications ? activeClass : inactiveClass %>">
                     <i class="bi bi-file-earmark-text me-2"></i> My Applications
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link px-3 py-2.5 fw-medium text-secondary rounded-2 nav-hover-custom">
+                <a href="workRecord.jsp" class="nav-link px-3 py-2.5 fw-medium rounded-2 <%= isWorkRecords ? activeClass : inactiveClass %>">
                     <i class="bi bi-clock-history me-2"></i> Work Records
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="WageCalculationServlet" class="nav-link px-3 py-2.5 fw-medium rounded-2 <%= isWageCalculation ? activeClass : inactiveClass %>">
+                    <i class="bi bi-calculator me-2"></i> Wage Calculation
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="payment.jsp" class="nav-link px-3 py-2.5 fw-medium rounded-2 <%= isPayments ? activeClass : inactiveClass %>">
+                    <i class="bi bi-cash-coin me-2"></i> Payments
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="ReportServlet" class="nav-link px-3 py-2.5 fw-medium rounded-2 <%= isReports ? activeClass : inactiveClass %>">
+                    <i class="bi bi-bar-chart-line me-2"></i> Reports &amp; Analytics
                 </a>
             </li>
         </ul>
@@ -83,23 +147,43 @@
             <div class="text-uppercase text-muted fs-7 fw-bold px-2 mb-2" style="font-size: 0.7rem; letter-spacing: 0.05em;">Menu Utama</div>
             <ul class="nav flex-column gap-1">
                 <li class="nav-item">
-                    <a href="dashboard.jsp" class="nav-link active px-3 py-2.5 fw-medium text-white rounded-2 shadow-sm bg-primary">
+                    <a href="dashboard.jsp" class="nav-link px-3 py-2.5 fw-medium rounded-2 <%= isDashboard ? activeClass : inactiveClass %>">
                         <i class="bi bi-speedometer2 me-2"></i> Dashboard
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link px-3 py-2.5 fw-medium text-secondary rounded-2 nav-hover-custom">
+                    <a href="profile.jsp" class="nav-link px-3 py-2.5 fw-medium rounded-2 <%= isProfile ? activeClass : inactiveClass %>">
+                        <i class="bi bi-person-circle me-2"></i> Profile
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="JobServlet" class="nav-link px-3 py-2.5 fw-medium rounded-2 <%= isExploreGigs ? activeClass : inactiveClass %>">
                         <i class="bi bi-search me-2"></i> Explore Gigs
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link px-3 py-2.5 fw-medium text-secondary rounded-2 nav-hover-custom">
+                    <a href="application.jsp" class="nav-link px-3 py-2.5 fw-medium rounded-2 <%= isApplications ? activeClass : inactiveClass %>">
                         <i class="bi bi-file-earmark-text me-2"></i> My Applications
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="#" class="nav-link px-3 py-2.5 fw-medium text-secondary rounded-2 nav-hover-custom">
+                    <a href="workRecord.jsp" class="nav-link px-3 py-2.5 fw-medium rounded-2 <%= isWorkRecords ? activeClass : inactiveClass %>">
                         <i class="bi bi-clock-history me-2"></i> Work Records
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="WageCalculationServlet" class="nav-link px-3 py-2.5 fw-medium rounded-2 <%= isWageCalculation ? activeClass : inactiveClass %>">
+                        <i class="bi bi-calculator me-2"></i> Wage Calculation
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="payment.jsp" class="nav-link px-3 py-2.5 fw-medium rounded-2 <%= isPayments ? activeClass : inactiveClass %>">
+                        <i class="bi bi-cash-coin me-2"></i> Payments
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a href="ReportServlet" class="nav-link px-3 py-2.5 fw-medium rounded-2 <%= isReports ? activeClass : inactiveClass %>">
+                        <i class="bi bi-bar-chart-line me-2"></i> Reports &amp; Analytics
                     </a>
                 </li>
             </ul>
